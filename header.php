@@ -7,26 +7,9 @@
 <?php if (is_search()) { ?>
 <meta name="robots" content="noindex, nofollow" />
 <?php } ?>
-<title>
-<?php
-		      if (function_exists('is_tag') && is_tag()) {
-		         single_tag_title("Tag Archive for &quot;"); echo '&quot; - '; }
-		      elseif (is_archive()) {
-		         wp_title(''); echo ' Archive - '; }
-		      elseif (is_search()) {
-		         echo 'Search for &quot;'.wp_specialchars($s).'&quot; - '; }
-		      elseif (!(is_404()) && (is_single()) || (is_page())) {
-		         wp_title(''); echo ' - '; }
-		      elseif (is_404()) {
-		         echo 'Not Found - '; }
-		      if (is_home()) {
-		         bloginfo('name'); echo ' - '; bloginfo('description'); }
-		      else {
-		          bloginfo('name'); }
-		      if ($paged>1) {
-		         echo ' - page '. $paged; }
-		   ?>
-</title>
+
+<title><?php wp_title( '|', true, 'right' ); ?></title>
+
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/bootstrap.css" type="text/css" />
 <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/carousel.css" type="text/css" />
@@ -41,8 +24,10 @@
 <body <?php body_class(); ?>>
 <div id="page-wrap">
 <?php
-		      if (is_home()) {
+		      if (is_page(home) ) {
 		         include 'template-slideshow.php';
 		      }
 		   ?>
 <?php include 'navigation.php' ?>
+
+<div class="container">

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 		<?php if (have_posts()) : ?>
-
+<div class="span8">
  			<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
 
 			<?php /* If this is a category archive */ if (is_category()) { ?>
@@ -27,21 +27,18 @@
 			
 			<?php } ?>
 
-			<?php include (TEMPLATEPATH . '/inc/nav.php' ); ?>
-
 			<?php while (have_posts()) : the_post(); ?>
-			
-				<div <?php post_class() ?>>
+		
 				
 						<h2 id="post-<?php the_ID(); ?>"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
 					
-						<?php include (TEMPLATEPATH . '/inc/meta.php' ); ?>
+						
 
-						<div class="entry">
+						
 							<?php the_content(); ?>
-						</div>
+						
 
-				</div>
+			
 
 			<?php endwhile; ?>
 
@@ -53,6 +50,13 @@
 
 	<?php endif; ?>
 
-<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>
+
+
+
+
+
+
+
+
